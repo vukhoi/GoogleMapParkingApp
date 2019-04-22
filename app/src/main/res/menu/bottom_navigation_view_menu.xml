@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_search"
+        android:icon="@drawable/ic_meter_24px"
+        android:title="@string/search" />
+    <item
+        android:id="@+id/navigation_find"
+        android:icon="@drawable/ic_car_24px"
+        android:title="@string/find" />
+    <item
+        android:id="@+id/navigation_reservation"
+        android:icon="@drawable/ic_list_24px"
+        android:title="@string/reservation" />
+    <item
+        android:id="@+id/navigation_my_car"
+        android:icon="@drawable/ic_person_pin_24px"
+        android:title="@string/my_car" />
+
+</menu>

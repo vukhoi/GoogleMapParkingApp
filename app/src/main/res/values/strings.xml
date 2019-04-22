@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">ParkingGoogleMapApp</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="search">Search</string>
+    <string name="find">Find</string>
+    <string name="reservation">Reservation</string>
+    <string name="my_car">My car</string>
+    <string name="parking_app">PARKING APP</string>
+    <string name="great">Great!!</string>
+    <string name="close">Close</string>
+    <string name="check">Check</string>
+    <string name="distance">Distance</string>
+    <string name="cost">Cost</string>
+    <string name="pay_and_reserve">Pay and Reserve</string>
+    <string name="more">More</string>
+    <string name="reserve_for">Reserve for</string>
+    <string name="parking_spot_info">PARKING SPOT INFO</string>
+</resources>
