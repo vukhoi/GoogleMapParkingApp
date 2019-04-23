@@ -4,17 +4,20 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
 import com.example.parkinggooglemapapp.R;
+import com.example.parkinggooglemapapp.presenter.CustomDialogPayAndReserve;
 import com.example.parkinggooglemapapp.presenter.MapActivityPresenter;
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
+
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
     private MapActivityPresenter presenter;
     private GoogleMap mMap;
+
+    public CustomDialogPayAndReserve createCustomDialogPayAndReserve(Bundle resultData) {
+        return new CustomDialogPayAndReserve(this, resultData);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,11 +34,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        presenter = new MapActivityPresenter(this.getBaseContext(), mMap);
-
-
+        presenter = new MapActivityPresenter(this, mMap);
         presenter.searchSurroundingParkingSpots(37.7749, -122.4194);
-
-
     }
+
 }

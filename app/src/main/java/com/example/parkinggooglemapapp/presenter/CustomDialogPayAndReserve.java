@@ -11,17 +11,20 @@ import android.widget.TextView;
 import com.example.parkinggooglemapapp.R;
 import com.example.parkinggooglemapapp.view.SpotDetailActivity;
 
-class CustomDialogPayAndReserve extends Dialog implements View.OnClickListener {
+public class CustomDialogPayAndReserve extends Dialog implements View.OnClickListener {
     private Context context;
+    private Bundle resultData;
     private TextView tvName, tvAddress, tvDistance, tvCost, tvMore;
     private View view;
     private Button btn;
 
 
-    public CustomDialogPayAndReserve(final Context context, final Bundle resultData) {
-        super(context);
-        this.context = context;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         view = getLayoutInflater().inflate(R.layout.custom_dialog_reserve_layout, null);
+
+        setContentView(view);
         tvName = view.findViewById(R.id.tv_name);
         tvAddress = view.findViewById(R.id.tv_address);
         tvDistance = view.findViewById(R.id.tv_num_distance);
@@ -49,6 +52,12 @@ class CustomDialogPayAndReserve extends Dialog implements View.OnClickListener {
                 context.startActivity(intent);
             }
         });
+    }
+
+    public CustomDialogPayAndReserve(final Context context, final Bundle resultData) {
+        super(context);
+        this.context = context;
+        this.resultData = resultData;
     }
 
 

@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -13,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="#00edff"
+        app:layout_constraintBottom_toTopOf="@+id/iv_background_pic"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -35,11 +35,13 @@
         android:layout_width="0dp"
         android:layout_height="250dp"
         android:layout_marginTop="60dp"
+        android:layout_marginBottom="450dp"
         android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/parkingLot" />
+        app:srcCompat="@drawable/parking_lot" />
 
     <LinearLayout
         android:orientation="horizontal"
@@ -54,18 +56,19 @@
         app:srcCompat="?attr/actionModeBackground" />
 
 
-
     <Button
         android:id="@+id/btn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="100dp"
         android:layout_marginBottom="100dp"
         android:text="@string/pay_and_reserve"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar" />
 
     <EditText
         android:id="@+id/et_Date"

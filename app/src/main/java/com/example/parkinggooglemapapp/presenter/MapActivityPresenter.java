@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.parkinggooglemapapp.model.RetrofitHelper;
 import com.example.parkinggooglemapapp.model.Spot;
+import com.example.parkinggooglemapapp.view.MapsActivity;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
@@ -137,6 +138,7 @@ public class MapActivityPresenter {
                                     String spotLat = String.valueOf(latLng.latitude);
                                     String spotLng = String.valueOf(latLng.longitude);
                                     if (spotLat.equals(lat) && spotLng.equals(lng)){
+                                        Log.d("test", dialog.getWindow().toString());
                                         dialog.setCanceledOnTouchOutside(true);
                                         dialog.show();
                                         return true;
@@ -187,12 +189,15 @@ public class MapActivityPresenter {
 
         @Override
         protected void onReceiveResult(int resultCode, Bundle resultData) {
-              if (resultCode == DistanceMatrixHelper.SUCCESS){
-                  MapActivityPresenter.this.waitCounter -= 1;
-                  MapActivityPresenter.this.dialogMap.put((LatLng) resultData.get(KEY), new CustomDialogPayAndReserve(MapActivityPresenter.this.context, resultData));
+            if (resultData != null) {
+                String distance = resultData.getString(DISTANCE);
+                if (resultCode == DistanceMatrixHelper.SUCCESS && Double.parseDouble(distance.substring(0, distance.length() - 2)) < 100) {
+                    MapActivityPresenter.this.waitCounter -= 1;
+                    MapActivityPresenter.this.dialogMap.put((LatLng) resultData.get(KEY), ((MapsActivity)context).createCustomDialogPayAndReserve(resultData));
 
-                  Log.d(this.getClass().getSimpleName() ,MapActivityPresenter.this.dialogMap.size() + "  " + waitCounter);
-              }
+                    Log.d(this.getClass().getSimpleName(), resultData.getString(NAME) + "  " + distance);
+                }
+            }
         }
     }
 }
